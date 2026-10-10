@@ -1,0 +1,28 @@
+# QuantEdge Strategy Configuration: Relative Strength Index (RSI)
+# Conforms to SOP-QUANT-001 (Section 6: Strategy B)
+
+strategy:
+  id: "STRAT-RSI-MOM-001"
+  name: "rsi_strategy"
+  display_name: "Relative Strength Index (RSI) Mean Reversion / Momentum"
+  version: "1.0.0"
+  description: "Oscillator strategy buying oversold pullbacks and exiting upon reaching overbought bands."
+
+parameters:
+  rsi_period: 14              # RSI lookback window
+  oversold_threshold: 30.0    # Entry trigger: RSI crosses above oversold level
+  overbought_threshold: 70.0  # Exit trigger: RSI crosses above overbought level
+  exit_on_neutral: false      # If true, exit when RSI crosses 50
+  trade_direction: "long_only"# "long_only" or "long_short"
+
+execution:
+  cost_model: "nse_equity_delivery"
+  signal_delay_bars: 1        # Signal at Bar T close -> execution at Bar T+1 open
+  position_sizing:
+    type: "percent_equity"
+    allocation_pct: 0.95
+    max_position_pct: 1.0
+  risk_controls:
+    stop_loss_pct: 0.04       # 4% stop loss
+    take_profit_pct: 0.08     # 8% profit target
+    max_drawdown_limit_pct: 0.20

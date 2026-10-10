@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuantEdge Research Tear Sheet: sma_crossover (TCS.NS)</title>
+<style>
+  :root {
+    --bg: #0F172A;
+    --card-bg: #1E293B;
+    --border: #334155;
+    --text: #F8FAFC;
+    --text-muted: #94A3B8;
+    --primary: #10B981;
+    --accent: #3B82F6;
+    --danger: #EF4444;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 2.5rem;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .header {
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .badge {
+    background: #064E3B;
+    color: #34D399;
+    padding: 0.3rem 0.8rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+  }
+  h1 { margin: 0.5rem 0 0.2rem 0; font-size: 2rem; }
+  .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .kpi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1.2rem;
+  }
+  .kpi-label { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; }
+  .kpi-val { font-size: 1.6rem; font-weight: 700; color: #FFFFFF; margin-top: 0.2rem; }
+  .kpi-val.green { color: var(--primary); }
+  .kpi-val.red { color: var(--danger); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: var(--card-bg);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 0.8rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th { background: #111827; color: var(--text-muted); font-size: 0.85rem; }
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <span class="badge">SOP-QUANT-001 VERIFIED</span>
+    <h1>QuantEdge Strategy Tear Sheet</h1>
+    <div class="subtitle">Strategy: <strong>sma_crossover</strong> | Instrument: <strong>TCS.NS</strong> | Period: 2020-01-01 00:00:00 &rarr; 2025-12-31 00:00:00</div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Final Equity</div>
+      <div class="kpi-val green">₹1,195,332.26</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Net Return (CAGR)</div>
+      <div class="kpi-val green">2.91%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Sharpe Ratio (Rf=6.5%)</div>
+      <div class="kpi-val">-0.16</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Max Drawdown</div>
+      <div class="kpi-val red">38.38%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Win Rate</div>
+      <div class="kpi-val">33.3%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Profit Factor</div>
+      <div class="kpi-val">1.37</div>
+    </div>
+  </div>
+
+  <h2>Performance Analytics</h2>
+  <table>
+    <tr><th>Metric</th><th>Strategy Value</th><th>Description</th></tr>
+    <tr><td>Compound Annual Growth Rate (CAGR)</td><td><strong>2.91%</strong></td><td>Annualized geometric rate of return</td></tr>
+    <tr><td>Annualized Volatility</td><td>14.55%</td><td>Standard deviation of periodic returns scaled to 252 bars</td></tr>
+    <tr><td>Sortino Ratio</td><td>-0.30</td><td>Excess return divided by downside deviation</td></tr>
+    <tr><td>Calmar Ratio</td><td>0.08</td><td>CAGR divided by Maximum Drawdown</td></tr>
+    <tr><td>Total Closed Trades</td><td>15</td><td>Winning: 5 | Losing: 10</td></tr>
+    <tr><td>Average Trade Win / Loss</td><td>₹130,402.35 / ₹-47,517.05</td><td>Payoff ratio: 2.74</td></tr>
+    <tr><td>Market Exposure</td><td>47.70%</td><td>Percentage of backtest duration with open position</td></tr>
+    <tr><td>Total Friction Paid</td><td>₹48,685.48</td><td>Brokerage, STT, Exchange fees, GST, Stamp Duty, Slippage</td></tr>
+    <tr><td>Benchmark Return</td><td>23.51%</td><td>Buy & Hold return over identical period</td></tr>
+  </table>
+
+  <div class="footer">
+    <p><strong>Disclaimer:</strong> Strictly for quantitative research and educational evaluation. Simulation does not account for intraday depth slippage, execution latency spikes, or exchange liquidity shocks. Past simulated results are non-predictive of live market profitability.</p>
+  </div>
+</div>
+</body>
+</html>

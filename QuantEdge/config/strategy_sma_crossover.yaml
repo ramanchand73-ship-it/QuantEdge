@@ -1,0 +1,26 @@
+# QuantEdge Strategy Configuration: SMA Crossover
+# Conforms to SOP-QUANT-001 (Section 6: Strategy A)
+
+strategy:
+  id: "STRAT-SMA-CROSS-001"
+  name: "sma_crossover"
+  display_name: "Simple Moving Average (SMA) Crossover"
+  version: "1.0.0"
+  description: "Trend-following momentum strategy based on fast and slow moving average intersections."
+
+parameters:
+  fast_period: 20             # Fast moving average lookback window (bars)
+  slow_period: 50             # Slow moving average lookback window (bars)
+  trade_direction: "long_only"# "long_only" or "long_short"
+
+execution:
+  cost_model: "nse_equity_delivery"
+  signal_delay_bars: 1        # Signal at Bar T close -> execution at Bar T+1 open
+  position_sizing:
+    type: "percent_equity"    # "percent_equity", "fixed_amount", "fixed_shares"
+    allocation_pct: 0.95      # 95% of available portfolio equity per trade
+    max_position_pct: 1.0     # Cap at 100% equity
+  risk_controls:
+    stop_loss_pct: null       # Optional stop loss percentage (e.g. 0.05 for 5%)
+    take_profit_pct: null     # Optional take profit percentage
+    max_drawdown_limit_pct: 0.25 # Kill switch at 25% max portfolio drawdown

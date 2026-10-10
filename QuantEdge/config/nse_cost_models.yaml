@@ -1,0 +1,65 @@
+# NSE India Transaction Cost Model Configurations
+# Conforms to SOP-QUANT-001 (Section 8: Transaction Costs & Execution Realism)
+# Rates represent standard Indian institutional/retail benchmark tiers as of 2024-2026.
+# Note: Rates are configurable estimates. Users should customize to reflect specific broker agreements.
+
+models:
+  nse_equity_delivery:
+    description: "NSE Cash Equity Delivery (CNC / Normal investment)"
+    effective_date: "2024-10-01"
+    venue: "NSE"
+    instrument_type: "EQUITY_DELIVERY"
+    brokerage_type: "flat_or_percent"     # options: 'percent', 'flat_per_order', 'zero'
+    brokerage_percent: 0.0005              # 0.05% or min/max cap
+    brokerage_flat_inr: 20.0               # ₹20 per executed order cap
+    brokerage_min_inr: 0.0
+    stt_buy_percent: 0.001                 # 0.1% on Buy value
+    stt_sell_percent: 0.001                # 0.1% on Sell value
+    exchange_txn_charge_percent: 0.0000345 # 0.00345% (NSE Cash)
+    sebi_turnover_fee_percent: 0.000001    # ₹10 per crore (0.0001%)
+    stamp_duty_buy_percent: 0.00015        # 0.015% on Buy only
+    stamp_duty_sell_percent: 0.0           # 0% on Sell
+    gst_percent: 0.18                      # 18% on (Brokerage + Exchange Txn + SEBI)
+    default_slippage_bps: 5.0              # 5 basis points (0.05%) default slippage
+    default_half_spread_bps: 2.0           # 2 basis points default half-spread
+    lot_size: 1
+
+  nse_equity_intraday:
+    description: "NSE Cash Equity Intraday (MIS / Day Trading)"
+    effective_date: "2024-10-01"
+    venue: "NSE"
+    instrument_type: "EQUITY_INTRADAY"
+    brokerage_type: "flat_per_order"
+    brokerage_percent: 0.0003              # 0.03% capped at flat ₹20
+    brokerage_flat_inr: 20.0
+    brokerage_min_inr: 0.0
+    stt_buy_percent: 0.0                   # Nil on intraday buy
+    stt_sell_percent: 0.00025              # 0.025% on intraday sell turnover
+    exchange_txn_charge_percent: 0.0000345 # 0.00345%
+    sebi_turnover_fee_percent: 0.000001    # ₹10 per crore
+    stamp_duty_buy_percent: 0.00003        # 0.003% on Buy only
+    stamp_duty_sell_percent: 0.0
+    gst_percent: 0.18                      # 18% on (Brokerage + Exchange Txn + SEBI)
+    default_slippage_bps: 3.0              # 3 basis points slippage
+    default_half_spread_bps: 2.0
+    lot_size: 1
+
+  zero_cost_ideal:
+    description: "Zero Friction Theoretical Model (for frictionless benchmark comparison)"
+    effective_date: "2024-01-01"
+    venue: "THEORETICAL"
+    instrument_type: "UNRESTRICTED"
+    brokerage_type: "zero"
+    brokerage_percent: 0.0
+    brokerage_flat_inr: 0.0
+    brokerage_min_inr: 0.0
+    stt_buy_percent: 0.0
+    stt_sell_percent: 0.0
+    exchange_txn_charge_percent: 0.0
+    sebi_turnover_fee_percent: 0.0
+    stamp_duty_buy_percent: 0.0
+    stamp_duty_sell_percent: 0.0
+    gst_percent: 0.0
+    default_slippage_bps: 0.0
+    default_half_spread_bps: 0.0
+    lot_size: 1

@@ -1,0 +1,49 @@
+# QuantEdge Strategy Configuration Template
+# Target: TCS Single-Stock / NIFTY 50 Cash Equity
+# Conforms to SOP-QUANT-001 (SOP_BACKTESTING.md)
+
+meta:
+  strategy_id: "STRAT-TCS-MOM-001"
+  strategy_name: "tcs_intraday_vwap_breakout"
+  version: "1.0.0"
+  author: "QuantEdge Research"
+  description: "Intraday VWAP breakout with EMA trend filtering for TCS cash equity"
+
+universe:
+  index: "NIFTY_50"
+  symbols:
+    - "TCS.NS"
+  universe_snapshot_version: "nifty50_2026_q3"
+
+data:
+  timeframe: "1d"               # 1m, 5m, 15m, 1d
+  start_date: "2020-01-01"
+  end_date: "2026-09-30"
+  storage_path: "data/sample/tcs_sample_daily.csv"
+  use_adjusted_for_signals: true
+  use_unadjusted_for_fills: true
+
+validation:
+  train_split: 0.60             # 60% Train (In-Sample)
+  val_split: 0.20               # 20% Validation (Hyperparameter tuning)
+  oos_split: 0.20               # 20% Out-of-Sample (Untouched test)
+  walk_forward:
+    enabled: true
+    is_window_months: 36
+    oos_window_months: 12
+    roll_step_months: 12
+    min_wfe_threshold: 0.60     # Walk-Forward Efficiency threshold
+
+execution:
+  capital_inr: 1000000          # ₹10,00,000 initial capital
+  signal_delay_bars: 1          # Signal at Bar T close -> Fill at Bar T+1 open
+  cost_model: "nse_equity_delivery"
+  slippage_bps: 5.0
+  position_sizing:
+    type: "percent_equity"
+    allocation_pct: 0.95
+    max_position_pct: 1.0
+  risk_controls:
+    stop_loss_pct: 0.05
+    take_profit_pct: 0.12
+    max_drawdown_limit_pct: 0.25
