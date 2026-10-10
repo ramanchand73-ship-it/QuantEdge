@@ -1,0 +1,1 @@
+Trading Backtester is a high-performance, modular Python library designed to simulate quantitative trading strategies using historical market data. It provides tools to ingest OHLCV data, apply complex technical indicator rules, execute simulated orders, and generate detailed performance metrics.
